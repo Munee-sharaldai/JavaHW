@@ -13,6 +13,8 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 class ToUpperCaseOperator implements UnaryOperator<String> {
+    private static final int shiftAmount = 32;
+
     @Override
     public String apply(String s) {
         if (s == null) {
@@ -22,7 +24,7 @@ class ToUpperCaseOperator implements UnaryOperator<String> {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (Character.isLowerCase(c)) {
-                chars[i] = (char) (c - 32);
+                chars[i] = (char) (c - shiftAmount);
             } else {
                 chars[i] = c;
             }
@@ -72,8 +74,9 @@ class EvenNumberSupplier implements Supplier<Integer> {
 
     @Override
     public Integer get() {
-        from += 2;
-        return from - 2;
+        Integer cur = this.from;
+        this.from += 2;
+        return cur;
     }
 }
 
