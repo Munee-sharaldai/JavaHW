@@ -56,7 +56,7 @@ class IsNumberASquareOfAnotherNumber implements Predicate<Integer> {
 
     @Override
     public boolean test(Integer integer) {
-        return (Math.sqrt(integer) * Math.sqrt((integer)) == integer);
+        return (Math.sqrt(integer) * Math.sqrt(integer) == integer);
     }
 }
 
